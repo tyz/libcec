@@ -1,0 +1,13 @@
+services:
+  pycec:
+    container_name: pycec
+    image: ghcr.io/tyz/libcec:latest
+    restart: always
+    network_mode: host
+    platform: linux/arm64/v8
+    privileged: true
+    environment:
+      - TZ=Europe/Amsterdam
+      - PYTHONPATH=/libcec/build/src/libcec
+    devices:
+      - /dev/cec0:/dev/cec0

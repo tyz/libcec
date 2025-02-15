@@ -101,8 +101,11 @@ else()
 
   # xrandr
   if(NOT DEFINED HAVE_RANDR OR HAVE_RANDR)
-    check_include_files("X11/Xlib.h;X11/Xatom.h;X11/extensions/Xrandr.h" HAVE_RANDR_HEADERS)
-    check_library_exists(Xrandr XRRGetScreenResources "" HAVE_RANDR_LIB)
+    #check_include_files("X11/Xlib.h;X11/Xatom.h;X11/extensions/Xrandr.h" HAVE_RANDR_HEADERS)
+    #check_library_exists(Xrandr XRRGetScreenResources "" HAVE_RANDR_LIB)
+    # autodetect fails, force RANDR
+    set(HAVE_RANDR_HEADERS "1")
+    set(HAVE_RANDR_LIB "1")
     if (HAVE_RANDR_HEADERS AND HAVE_RANDR_LIB)
       list(APPEND CEC_SOURCES_PLATFORM platform/X11/randr-edid.cpp)
     endif()
