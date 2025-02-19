@@ -1,0 +1,9 @@
+uservices:
+  pycec:
+    container_name: pycec
+    image: ghcr.io/tyz/libcec:latest
+    network_mode: host
+    devices:
+      - /dev/vchiq:/dev/vchiq
+    environment:
+      - TZ=Europe/Amsterdam
